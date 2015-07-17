@@ -9,7 +9,7 @@
 \usepackage{courier}
 \setlength{\parindent}{0em} % changed from 0.5em. 0.75cm is good for no parskip.
 % \setlength{\parskip}{6pt} % preferred value at OIL; now using "half", which is set in the document declaration and is ever-so-slightly less than 6pt and makes for a less torn-apart look.
-\usepackage[style=mla,backend=biber]{biblatex} %mladraft=true,annotation=true,
+\usepackage[style=authoryear,backend=biber]{biblatex} %mladraft=true,annotation=true,
 \usepackage{color}
 \usepackage{multicol}
 \newcommand{\sources}[1]{\def\@sources{#1}\bibliography{#1}}
@@ -41,65 +41,6 @@
 {\z@}%
 {\lineskip}%
 {\normalfont}}
-%Bibliography Commands
-\DeclareFieldFormat{ibidpostnote}{#1}%
-\newbibmacro*{cite:idem}{%
-\ifsingletitle%
-{\iffieldundef{postnote}%
-{\usebibmacro{cite:name}}%
-{\unspace\global\boolfalse{cbx@named}}}%
-{\addspace\global\boolfalse{cbx@named}}}
-\newbibmacro*{cite:mla:title:internal}{% 0.7.1 new internal macro
-\ifbool{cbx@named}%
-{\unspace\addcomma\addspace}%
-{}%
-\iffieldundef{title}%
-{\iffieldequalstr{entrytype}{review}%
-{\printtext[bibhyperref]{\printtext{\bibstring{reviewof}%
-\addspace\printfield{booktitle}}}}%
-{\ifthenelse{\iffieldequalstr{entrytype}{suppbook}% 0.7.1
-\OR\iffieldequalstr{entrytype}{suppcollection}}%
-{\printtext[bibhyperref]{%
-\printfield[mla:capital]{entrysubtype}}}%
-{}}}%
-{\printtext[bibhyperref]{%
-\printfield[citetitle:\strfield{entrytype}]{labeltitle}}}}%
-\newbibmacro*{cite:mla:title}{% 0.7.1 tidied up
-\unspace%
-\ifnameundef{labelname}%
-{\unspace%
-\printtext[bibhyperref]{%
-\printfield[citetitle:\strfield{entrytype}]{labeltitle}}%
-\iffieldundef{postnote}%
-{}%
-{\addspace}}%
-{\ifsingletitle%
-{}%
-{\usebibmacro{cite:mla:title:internal}\addspace}}%
-\ifthenelse{\iffieldequalstr{entrytype}{review}%
-\and\ifnameundef{author}%
-\and\iffieldundef{title}}%
-{\printtext[bibhyperref]%
-{\unspace\printtext{\bibcpstring{reviewof}%
-\addspace\printfield{booktitle}}}}%
-{}}%
-\DeclareCiteCommand{\cite}[\mkbibparens]
-{\usebibmacro{prenote}}%
-{\usebibmacro{citeindex}%
-\usebibmacro{cite:mla}}{}
-{\usebibmacro{postnote}}
-\defbibheading{apa}[\refname]{}
-%Annotations for the Bibliography
-\renewbibmacro{finentry}{%Renew the annotation macro
-\finentry
-\iffieldundef{annotation}%
-{}%
-{\ifbool{bbx@annotation}%
-{\begin{quotation}\noindent%Make the annotation look like a quotation and remove the indent
-\printfield{annotation}%
-\end{quotation}}%
-{}}%
-}
 \usepackage{datetime}
 \usepackage{fancyhdr}
 \newcommand{\university}[1]{
@@ -141,6 +82,7 @@
 % Things needed beyond what mla13 provided.
 \usepackage{titling}
 \usepackage{url}
+\urlstyle{same}
 \usepackage[hidelinks]{hyperref}
 % should work but doesn't - problem with another package?
 % \usepackage{attachfile}
@@ -204,6 +146,7 @@
 \renewcommand{\headrulewidth}{0pt}
 \geometry{top=3cm,bottom=3cm,left=2.5cm,right=2.5cm} % changed from 1in for all four sides.
 \usepackage[absolute]{textpos}
+\usepackage{float}
 \newcommand*{\makeheader}{\begin{titlepage}
   \begin{center}
   \pagestyle{empty}
@@ -264,7 +207,7 @@
 \newcommand*{\makeworkscited}{\begingroup
 \pagebreak
 \section{Works Cited}
-\printbibliography[heading=apa]
+\printbibliography%[heading=apa]
 \endgroup}
 % scrartcl seems to have a slightly larger font in tables for some reason - reverse this.
 \let\oldlongtable\longtable
