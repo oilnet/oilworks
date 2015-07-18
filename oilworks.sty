@@ -122,7 +122,8 @@
 \usepackage{longtable}
 \usepackage{geometry}
 \usepackage{fontspec}
-\usepackage{polyglossia}
+% \usepackage{ragged2e}
+\usepackage{polyglossia} % Also loads bidi!
 \setmainlanguage{english}
 \setotherlanguage{arabic}
 \newfontfamily\arabicfont[Script=Arabic,Scale=1.1]{Amiri}
@@ -137,6 +138,7 @@
 \newcommand{\latin}[1]{{\emph{#1}}} % For easier handling of how latin phrases are formatted.
 \newcommand{\dmg}[1]{{\emph{#1}}} % The same for DMG transliteration.
 %\newcommand{\textar}[1]{\fontspec{Arial}\beginR{#1}\endR\rmfamily} % using \textarabic instead which is already defined
+\newcolumntype{J}[1]{>{\arraybackslash}p{#1}}
 \newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
 \newcolumntype{M}[1]{>{\color{gray}\raggedright\arraybackslash}p{#1}}
 \newcolumntype{R}[1]{>{\raggedleft\arraybackslash}p{#1}}
@@ -147,6 +149,7 @@
 \geometry{top=3cm,bottom=3cm,left=2.5cm,right=2.5cm} % changed from 1in for all four sides.
 \usepackage[absolute]{textpos}
 \usepackage{float}
+\usepackage{parcolumns}
 \newcommand*{\makeheader}{\begin{titlepage}
   \begin{center}
   \pagestyle{empty}
@@ -207,7 +210,7 @@
 \newcommand*{\makeworkscited}{\begingroup
 \pagebreak
 \section{Works Cited}
-\printbibliography%[heading=apa]
+\printbibliography[heading=none]
 \endgroup}
 % scrartcl seems to have a slightly larger font in tables for some reason - reverse this.
 \let\oldlongtable\longtable
