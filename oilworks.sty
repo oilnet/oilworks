@@ -96,9 +96,11 @@
 \usepackage{blindtext}
 \usepackage[section]{minted}
 \usepackage{mdframed}
-\definecolor{gray}{rgb}{0.95,0.95,0.95}
+\usepackage{colortbl}
+\definecolor{lightgray}{rgb}{0.95,0.95,0.95}
+\definecolor{mediumgray}{rgb}{0.8,0.8,0.8}
 \newmintedfile[rubycode]{ruby}{
-  bgcolor=gray,
+  bgcolor=lightgray,
   fontsize=\tiny,
   linenos=true,
   numberblanklines=true,
