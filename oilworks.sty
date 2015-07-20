@@ -9,7 +9,17 @@
 \usepackage{courier}
 \setlength{\parindent}{0em} % changed from 0.5em. 0.75cm is good for no parskip.
 % \setlength{\parskip}{6pt} % preferred value at OIL; now using "half", which is set in the document declaration and is ever-so-slightly less than 6pt and makes for a less torn-apart look.
-\usepackage[style=authoryear-ibid,backend=biber]{biblatex} %mladraft=true,annotation=true,
+\usepackage[
+citestyle=authoryear-ibid,
+bibstyle=authoryear,
+backend=biber,
+hyperref=true,
+sorting=ynt,
+ibidpage=true,
+dashed=true,
+mergedate=maximum,
+]{biblatex} %mladraft=true,annotation=true,
+\renewcommand*{\mkibid}{\emph}
 \usepackage{color}
 \usepackage{multicol}
 \newcommand{\sources}[1]{\def\@sources{#1}\bibliography{#1}}
