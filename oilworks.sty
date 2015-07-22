@@ -229,3 +229,29 @@ mergedate=maximum,
 % scrartcl seems to have a slightly larger font in tables for some reason - reverse this.
 \let\oldlongtable\longtable
 \renewcommand{\longtable}{\small\oldlongtable}
+
+% Some additional citation commands.
+
+\DeclareCiteCommand*{\citeauthor}
+{\defcounter{maxnames}{99}%
+\defcounter{minnames}{99}%
+\defcounter{uniquename}{2}%
+\boolfalse{citetracker}%
+\boolfalse{pagetracker}%
+\usebibmacro{prenote}}
+{\ifciteindex{\indexnames{labelname}}{}%
+\printnames{labelname}}
+{\multicitedelim}
+{\usebibmacro{postnote}}
+
+\DeclareCiteCommand{\citeauthorfull}
+  {\boolfalse{citetracker}%
+   \boolfalse{pagetracker}%
+   \DeclareNameAlias{labelname}{first-last}%
+   \usebibmacro{prenote}}
+  {\ifciteindex
+     {\indexnames{labelname}}
+     {}%
+   \printnames{labelname}}
+  {\multicitedelim}
+  {\usebibmacro{postnote}}
