@@ -3,18 +3,18 @@
 % style guidelines (see https://github.com/jackson13info/mla13).
 \ProvidesPackage{oilworks}
 \usepackage[a4paper]{geometry} % changed from letterpaper.
-\usepackage[english]{babel} % changed from american.
-\usepackage[ngerman]{datetime}
+\usepackage[english]{babel} % TODO: Parameter gehört ins Hauptdokument, nicht den Stil.
+\usepackage[ngerman]{datetime} % TODO: Parameter gehört ins Hauptdokument, nicht den Stil.
 \usepackage{csquotes}
 \usepackage{courier}
 \setlength{\parindent}{0em} % changed from 0.5em. 0.75cm is good for no parskip.
 % \setlength{\parskip}{6pt} % preferred value at OIL; now using "half", which is set in the document declaration and is ever-so-slightly less than 6pt and makes for a less torn-apart look.
 \usepackage[
-citestyle=authoryear-ibid,
+citestyle=authoryear-icomp,
 bibstyle=authoryear,
 backend=biber,
 hyperref=true,
-sorting=ynt,
+sorting=nty,
 ibidpage=true,
 dashed=true,
 mergedate=maximum,
@@ -139,11 +139,14 @@ mergedate=maximum,
 % \usepackage{ragged2e}
 \usepackage{float}
 \usepackage{polyglossia} % Also loads bidi!
-\setmainlanguage{english}
+\setmainlanguage{english} % TODO: Parameter gehört ins Hauptdokument, nicht den Stil.
 \setotherlanguage{arabic}
 \newfontfamily\arabicfont[Script=Arabic,Scale=1.1]{Amiri}
 \usepackage{setspace}
 \onehalfspacing
+% redefine \textarabic{} to always be upright
+\let\oldtextarabic\textarabic
+\renewcommand{\textarabic}{\upshape\oldtextarabic}
 % redefine \textarabic{} to have bigger linespacing to accomodate the taškīl.
 \def\ara{\doublespacing\textarabic}
 \sources{references.bib}
@@ -213,7 +216,7 @@ mergedate=maximum,
   \endgroup
   \end{flushleft}
   \end{textblock*}
-  \selectlanguage{english}
+  \selectlanguage{english} % TODO: Parameter gehört ins Hauptdokument, nicht den Stil.
   \end{center}
 \end{titlepage}
 \clearpage
@@ -223,8 +226,9 @@ mergedate=maximum,
 }
 \newcommand*{\makeworkscited}{\begingroup
 \pagebreak
-\section{Works Cited}
-\printbibliography[heading=none]
+% \section{Works Cited}
+\addcontentsline{toc}{section}{Works Cited}
+\printbibliography[title=Works Cited]
 \endgroup}
 % scrartcl seems to have a slightly larger font in tables for some reason - reverse this.
 \let\oldlongtable\longtable
@@ -255,3 +259,9 @@ mergedate=maximum,
    \printnames{labelname}}
   {\multicitedelim}
   {\usebibmacro{postnote}}
+
+% Citations in the form "Author year: page".  
+
+\renewcommand*{\postnotedelim}{\addcolon\space}
+\DeclareFieldFormat{postnote}{#1}
+\DeclareFieldFormat{multipostnote}{#1}
