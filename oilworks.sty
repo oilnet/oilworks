@@ -7,6 +7,7 @@
 \usepackage[ngerman]{datetime} % TODO: Parameter gehört ins Hauptdokument, nicht den Stil.
 \usepackage{csquotes}
 \usepackage{courier}
+\usepackage[multiple]{footmisc}
 \setlength{\parindent}{0em} % changed from 0.5em. 0.75cm is good for no parskip.
 % \setlength{\parskip}{6pt} % preferred value at OIL; now using "half", which is set in the document declaration and is ever-so-slightly less than 6pt and makes for a less torn-apart look.
 \usepackage[
@@ -18,6 +19,7 @@ sorting=nty,
 ibidpage=true,
 dashed=true,
 mergedate=maximum,
+maxcitenames=3,mincitenames=3,
 ]{biblatex} %mladraft=true,annotation=true,
 \renewcommand*{\mkibid}{\emph}
 \usepackage{color}
@@ -262,6 +264,6 @@ mergedate=maximum,
 
 % Citations in the form "Author year: page".  
 
-\renewcommand*{\postnotedelim}{\addcolon\space}
+\renewcommand*{\postnotedelim}{\addcolon} % plus "\space" for a space.
 \DeclareFieldFormat{postnote}{#1}
 \DeclareFieldFormat{multipostnote}{#1}
