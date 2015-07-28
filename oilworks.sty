@@ -238,26 +238,14 @@ maxcitenames=3,mincitenames=3,
 
 % Some additional citation commands.
 
-\DeclareCiteCommand*{\citeauthor}
-{\defcounter{maxnames}{99}%
-\defcounter{minnames}{99}%
-\defcounter{uniquename}{2}%
-\boolfalse{citetracker}%
-\boolfalse{pagetracker}%
-\usebibmacro{prenote}}
-{\ifciteindex{\indexnames{labelname}}{}%
-\printnames{labelname}}
-{\multicitedelim}
-{\usebibmacro{postnote}}
-
 \DeclareCiteCommand{\citeauthorfull}
-  {\boolfalse{citetracker}%
-   \boolfalse{pagetracker}%
-   \DeclareNameAlias{labelname}{first-last}%
+  {\boolfalse{citetracker}
+   \boolfalse{pagetracker}
+   \DeclareNameAlias{labelname}{first-last}
    \usebibmacro{prenote}}
   {\ifciteindex
      {\indexnames{labelname}}
-     {}%
+     {}
    \printnames{labelname}}
   {\multicitedelim}
   {\usebibmacro{postnote}}
@@ -267,3 +255,13 @@ maxcitenames=3,mincitenames=3,
 \renewcommand*{\postnotedelim}{\addcolon} % plus "\space" for a space.
 \DeclareFieldFormat{postnote}{#1}
 \DeclareFieldFormat{multipostnote}{#1}
+
+% Cfr's suggestion of a \parencitetitle command.
+
+\usepackage{xparse}
+\NewDocumentCommand \parencitetitle { > { \SplitArgument { 1 } { : } } m }
+{%
+  \myparencitetitle #1}
+\NewDocumentCommand \myparencitetitle { m m }
+{%
+  \parentext {\mkbib{\usebibmacro{prenote}\MakeUppercase{#1}}: \citetitle{#1:#2}\usebibmacro{postnote}}}
