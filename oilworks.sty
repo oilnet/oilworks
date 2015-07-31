@@ -177,6 +177,8 @@
 \newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
 \newcolumntype{M}[1]{>{\color{gray}\raggedright\arraybackslash}p{#1}}
 \newcolumntype{R}[1]{>{\raggedleft\arraybackslash}p{#1}}
+% monospaced font for code, etc.
+\def\code#1{\texttt{#1}}
 
 % back to stuff that was once mla13.
 
@@ -239,9 +241,11 @@
   \end{center}
 \end{titlepage}
 \clearpage
+\pagenumbering{Roman}
 \tableofcontents
-\thispagestyle{empty}
+%\thispagestyle{empty}
 \clearpage
+\pagenumbering{arabic}
 }
 \newcommand*{\makeworkscited}{\begingroup
 \pagebreak
