@@ -16,7 +16,6 @@
 \usepackage[ngerman]{datetime} % for first page only! 
 \usepackage{csquotes}
 \usepackage{courier}
-\usepackage[multiple]{footmisc}
 \setlength{\parindent}{0em} % changed from 0.5em. 0.75cm is good for no parskip.
 
 \usepackage[
@@ -31,7 +30,7 @@
   maxitems=3,
   mincrossrefs=1,
 ]{biblatex}
-\renewcommand*{\mkibid}{\emph}
+% \renewcommand*{\mkibid}{\emph}
 
 \usepackage{color}
 \usepackage{multicol}
@@ -112,20 +111,31 @@
 \usepackage{titling}
 \usepackage{url}
 \urlstyle{same}
-\usepackage[hidelinks]{hyperref}
+\usepackage{xcolor}
+\usepackage{colortbl}
+
+\definecolor{lightgray}{rgb}{0.95,0.95,0.95}
+\definecolor{mediumgray}{rgb}{0.8,0.8,0.8}
+\definecolor{darkgray}{rgb}{0.25,0.25,0.25}
+\definecolor{black}{rgb}{0,0,0}
+\definecolor{navyblue}{rgb}{0.2,0.2,0.6}
+
+\usepackage[
+  colorlinks=true, % light 'em up!
+  citecolor=black, % biblatex citations.
+  linkcolor=red,   % footnote numbers.
+  filecolor=red,   % links to local files.
+  urlcolor=red,    % links to websites.
+]{hyperref}
 \usepackage{import}
 \usepackage{tocstyle}
 \usepackage[nottoc,numbib]{tocbibind}
 \usepackage{booktabs}
 \usepackage{graphicx}
 \usepackage{blindtext}
+
 \usepackage[section]{minted}
 \usepackage{mdframed}
-\usepackage{colortbl}
-\definecolor{lightgray}{rgb}{0.95,0.95,0.95}
-\definecolor{mediumgray}{rgb}{0.8,0.8,0.8}
-\definecolor{darkgray}{rgb}{0.25,0.25,0.25}
-\definecolor{black}{rgb}{0,0,0}
 \newmintedfile[rubycode]{ruby}{
   bgcolor=lightgray,
   fontsize=\tiny,
@@ -179,6 +189,11 @@
 \newcolumntype{R}[1]{>{\raggedleft\arraybackslash}p{#1}}
 % monospaced font for code, etc.
 \def\code#1{\texttt{#1}}
+
+% separate multiple consecutive footnotes by comma automatically,
+% or provide a means to doing so manually should the first not work.
+%\usepackage[multiple]{footmisc}
+\newcommand\fnsep{\textsuperscript{,}}
 
 % back to stuff that was once mla13.
 
@@ -245,7 +260,7 @@
 \newcommand*{\makeworkscited}{\begingroup
 \pagebreak
 \addcontentsline{toc}{section}{Works Cited}
-\setlength{\bibitemsep}{\parskip} % make bibliography more readable.
+\setlength{\bibitemsep}{0.5\parskip} % make bibliography more readable.
 \printbibliography[title=Works Cited]
 \endgroup}
 
