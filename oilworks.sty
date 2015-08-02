@@ -23,11 +23,10 @@
   bibstyle=authoryear,
   backend=biber,
   hyperref=true,
-  sorting=nty,
+  sorting=nyt,
   ibidpage=true,
   dashed=true,
   mergedate=maximum,
-  maxitems=3,
   mincrossrefs=1,
 ]{biblatex}
 % \renewcommand*{\mkibid}{\emph}
@@ -159,6 +158,8 @@
 \usepackage{pdfpages}
 \usepackage{array}
 \usepackage{longtable}
+\usepackage{placeins}
+\usepackage{wrapfig}
 \usepackage{geometry}
 \usepackage{fontspec}
 \usepackage{float}
@@ -194,6 +195,14 @@
 % or provide a means to doing so manually should the first not work.
 %\usepackage[multiple]{footmisc}
 \newcommand\fnsep{\textsuperscript{,}}
+
+% footnotes without marker
+\newcommand\blindfootnote[1]{%
+  \begingroup
+  \renewcommand\thefootnote{}\footnote{#1}%
+  \addtocounter{footnote}{-1}%
+  \endgroup
+}
 
 % back to stuff that was once mla13.
 
