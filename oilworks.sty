@@ -273,9 +273,11 @@
 }
 \newcommand*{\makeworkscited}{\begingroup
 \pagebreak
+\singlespacing
 \addcontentsline{toc}{section}{Works Cited}
-\setlength{\bibitemsep}{0.5\parskip} % make bibliography more readable.
+\setlength{\bibitemsep}{\parskip} % make bibliography more readable.
 \printbibliography[title=Works Cited]
+\onehalfspacing
 \endgroup}
 
 % scrartcl seems to have a slightly larger font in tables for some reason - reverse this.
@@ -360,4 +362,75 @@
 \g@addto@macro\@floatboxreset\centering
 \makeatother
 
-\let\listoffiguresandtables\listoffigures
+% combined list of figures and tables
+% see http://tex.stackexchange.com/questions/258501/how-to-make-a-combined-list-of-figures-and-tables/258516#258516
+
+\usepackage[titles]{tocloft}
+\newlistof{figuresandtables}{loft}{List of figures and tables}
+\makeatletter
+% Change the file extension of both lot and lof
+\def\ext@figure{loft}
+\def\ext@table{loft}
+% Store the original `\thefigure` and `\thetable`
+\let\tohe@thefigure\thefigure
+\let\tohe@thetable\thetable
+% Redefine them to contain a "dummy" `\tohe@list...`
+\def\thefigure{\tohe@listfig\tohe@thefigure}
+\def\thetable{\tohe@listtab\tohe@thetable}
+% Make the two dummy commands truly dummy
+\let\tohe@listfig\relax
+\let\tohe@listtab\relax
+% Store the original `\listoffiguresandtables`
+\let\tohe@listoffiguresandtables\listoffiguresandtables
+% Redefine it in such a way that the dummy commands insert "Fig." or "Tab." respectively
+\def\listoffiguresandtables{%
+  \begingroup
+  \addcontentsline{toc}{section}{List of figures and tables}
+  \def\tohe@listfig{Figure~}
+  \def\tohe@listtab{Table~}
+  \tohe@listoffiguresandtables
+  \endgroup  
+}
+% Change \listoffiguresandtables spacing
+\setlength{\cftfignumwidth}{5.5em}
+\setlength{\cfttabnumwidth}{5.5em}
+\setlength{\cftfigindent}{1pt}
+\setlength{\cfttabindent}{0pt}
+\makeatother
+
+% autoref settings
+
+\usepackage{catoptions}
+\makeatletter
+
+\def\subsubsectionautorefname{chapter}
+\def\subsectionautorefname{chapter}
+\def\sectionautorefname{chapter}
+\def\figureautorefname{figure}
+\def\tableautorefname{table}
+\def\appendixautorefname{appendix}
+
+\def\Autoref#1{%
+  \begingroup
+  \edef\reserved@a{\cpttrimspaces{#1}}%
+  \ifcsndefTF{r@#1}{%
+    \xaftercsname{\expandafter\testreftype\@fourthoffive}
+      {r@\reserved@a}.\\{#1}%
+  }{%
+    \ref{#1}%
+  }%
+  \endgroup
+}
+\def\testreftype#1.#2\\#3{%
+  \ifcsndefTF{#1autorefname}{%
+    \def\reserved@a##1##2\@nil{%
+      \uppercase{\def\ref@name{##1}}%
+      \csn@edef{#1autorefname}{\ref@name##2}%
+      \autoref{#3}%
+    }%
+    \reserved@a#1\@nil
+  }{%
+    \autoref{#3}%
+  }%
+}
+\makeatother
