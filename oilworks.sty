@@ -56,7 +56,7 @@
 
 \def\section{\@startsection{section}{1}{\z@}{-5.25ex plus -1ex minus -.2ex}{3.5ex plus .2ex}{\center\large\textbf}} % \newpage
 \def\subsection{\@startsection{subsection}{1}{\z@}{-4.25ex plus -1ex minus -.2ex}{0.5ex plus .2ex}{\large\textbf}}
-\def\subsubsection{\@startsection{subsubsection}{1}{\z@}{-4.25ex plus -1ex minus -.2ex}{0.5ex plus .2ex}{\large\textbf}}
+\def\subsubsection{\@startsection{subsubsection}{1}{\z@}{-2.75ex plus -1ex minus -.2ex}{0.5ex plus .2ex}{\large\textbf}}
 \def\thesection{\arabic{section}}
 \renewcommand\paragraph{\@startsection{paragraph}{4}{\z@}%
 {\z@}%
@@ -118,13 +118,19 @@
 \definecolor{darkgray}{rgb}{0.25,0.25,0.25}
 \definecolor{black}{rgb}{0,0,0}
 \definecolor{navyblue}{rgb}{0.2,0.2,0.6}
+\definecolor{lightlinkblue}{rgb}{0.16,0.36,0.69}
+\definecolor{linkblue}{rgb}{0.13,0.0,0.8}
+\definecolor{arsenic}{rgb}{0.23,0.27,0.29}
+\definecolor{ceruleanblue}{rgb}{0.16,0.32,0.75}
+\definecolor{coolblack}{rgb}{0.0,0.18,0.39}
 
 \usepackage[
-  colorlinks=true, % light 'em up!
-  citecolor=black, % biblatex citations.
-  linkcolor=red,   % footnote numbers.
-  filecolor=red,   % links to local files.
-  urlcolor=red,    % links to websites.
+  hidelinks,
+  colorlinks=false,    % light 'em up!
+  citecolor=black,     % biblatex citations.
+  linkcolor=coolblack, % footnote numbers.
+  filecolor=coolblack, % links to local files.
+  urlcolor=coolblack,  % links to websites.
 ]{hyperref}
 \usepackage{import}
 \usepackage{tocstyle}
@@ -235,6 +241,7 @@
   \vspace*{1.25cm}
   \begingroup
     {\LARGE \@title} \\
+    \vspace{0.2cm}
     {\normalsize \textit{\@subtitle}} \\
   \endgroup
   \vspace*{1.25cm}
@@ -385,7 +392,6 @@
 % Redefine it in such a way that the dummy commands insert "Fig." or "Tab." respectively
 \def\listoffiguresandtables{%
   \begingroup
-  \addcontentsline{toc}{section}{List of figures and tables}
   \def\tohe@listfig{Figure~}
   \def\tohe@listtab{Table~}
   \tohe@listoffiguresandtables
