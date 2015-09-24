@@ -1,0 +1,292 @@
+% LaTeX style sheet for theses at the Oriental Institut, University of Leipzig.
+% Based on jackson13's mla13 style designed for the Modern Language Association's
+% style guidelines (see https://github.com/jackson13info/mla13).
+
+% \ProvidesPackage{oilworks}
+% \usepackage{fancyhdr}
+% \fancyhf{}
+% \fancyhead{}
+% \renewcommand{\headrulewidth}{0pt}
+
+\input{oilworks/variables.sty}
+\input{oilworks/titlepage.sty}
+
+% Set document's main language
+% -----------------------------------------------------------------------------
+\if\relax\detokenize{\@OWlanguagevariant}\relax
+  \setdefaultlanguage[variant=\@OWlanguagevariant]{\@OWdefaultlanguage}
+\else
+  \setdefaultlanguage{\@OWdefaultlanguage}
+\fi
+
+% Change section headings
+% -----------------------------------------------------------------------------
+\renewcommand\thesection{\@arabic\c@section.}
+\renewcommand\thesubsection{\thesection\@arabic\c@subsection}
+% \renewcommand\section{\@startsection{section}{1}{\z@}%
+% {\z@}%
+% {\lineskip}}
+% \renewcommand\subsection{\@startsection{subsection}{2}{\z@}%
+% {\z@}%
+% {\lineskip}}
+% \renewcommand\subsubsection{\@startsection{subsubsection}{3}{\z@}%
+% {\z@}%
+% {\lineskip}}
+\def\section{\@startsection{section}{1}{\z@}{-5.25ex plus -1ex minus -.2ex}{3.5ex plus .2ex}{\centering\large\textbf}} % \newpage
+\def\subsection{\@startsection{subsection}{1}{\z@}{-4.25ex plus -1ex minus -.2ex}{0.5ex plus .2ex}{\large\textbf}}
+\def\subsubsection{\@startsection{subsubsection}{1}{\z@}{-2.75ex plus -1ex minus -.2ex}{0.5ex plus .2ex}{\large\textbf}}
+\def\thesection{\arabic{section}}
+\renewcommand\paragraph{\@startsection{paragraph}{4}{\z@}%
+{\z@}%
+{\lineskip}%
+{\normalfont}}
+\renewcommand\subparagraph{\@startsection{subparagraph}{5}{\parindent}%
+{\z@}%
+{\lineskip}%
+{\normalfont}}
+
+% Change document style settings
+% -----------------------------------------------------------------------------
+\geometry{top=3cm,bottom=3cm,left=2.5cm,right=2.5cm}
+\setlength{\parindent}{0em} % 0.75cm would be good for no parskip
+\urlstyle{same}
+\renewenvironment{itemize}[1]{\begin{compactitem}#1}{\end{compactitem}}
+\renewenvironment{enumerate}[1]{\begin{compactenum}#1}{\end{compactenum}}
+\onehalfspacing
+% Scrartcl seems to have a slightly larger font in tables for some reason, undoing it
+\let\oldlongtable\longtable
+\renewcommand{\longtable}{\small\oldlongtable}
+% Cause tables and figures to be centered
+\g@addto@macro\@floatboxreset\centering
+
+% Color definitions
+% -----------------------------------------------------------------------------
+\definecolor{lightgray}{rgb}{0.95,0.95,0.95}
+\definecolor{mediumgray}{rgb}{0.8,0.8,0.8}
+\definecolor{darkgray}{rgb}{0.25,0.25,0.25}
+\definecolor{black}{rgb}{0,0,0}
+\definecolor{navyblue}{rgb}{0.2,0.2,0.6}
+\definecolor{lightlinkblue}{rgb}{0.16,0.36,0.69}
+\definecolor{linkblue}{rgb}{0.13,0.0,0.8}
+\definecolor{arsenic}{rgb}{0.23,0.27,0.29}
+\definecolor{ceruleanblue}{rgb}{0.16,0.32,0.75}
+\definecolor{coolblack}{rgb}{0.0,0.18,0.39}
+
+% PDF metadata
+% -----------------------------------------------------------------------------
+\hypersetup{
+  pdftitle={\@title},pdfauthor={\@author},
+  pdfsubject={\@subtitle},
+  pdfcreator={XeLaTeX},pdfproducer={XeLaTeX},
+  pdfkeywords={arabic oman}}
+
+% Commands of convenience
+% -----------------------------------------------------------------------------
+\newcommand{\latin}[1]{{\emph{#1}}} % For easier handling of how latin phrases are formatted
+\newcommand{\dmg}[1]{{\emph{#1}}} % The same for DMG transliteration
+\newcommand{\tbltodo}[3][]{\begin{minipage}{#2}\todo[inline,#1]{#3}\end{minipage}} % For todo notes in tables
+\def\code#1{\texttt{#1}}
+% Separate multiple consecutive footnotes by comma automatically,
+% or provide a means to doing so manually should the first not work.
+%\usepackage[multiple]{footmisc}
+\newcommand\fnsep{\textsuperscript{,}}
+% Footnotes without marker
+\newcommand\blindfootnote[1]{%
+  \begingroup
+  \renewcommand\thefootnote{}\footnote{#1}%
+  \addtocounter{footnote}{-1}%
+  \endgroup}
+
+% New table column types
+% -----------------------------------------------------------------------------
+\newcolumntype{J}[1]{>{\arraybackslash}p{#1}}
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+\newcolumntype{M}[1]{>{\color{gray}\raggedright\arraybackslash}p{#1}}
+\newcolumntype{R}[1]{>{\raggedleft\arraybackslash}p{#1}}
+
+% Other layout macros
+% -----------------------------------------------------------------------------
+\newcommand*{\OWtoc}{
+  \newpage
+  \pagenumbering{Roman}
+  \tableofcontents
+  \newpage
+  \pagenumbering{arabic}}
+% \newcommand*{\OWtotaf}{
+%   \listoffiguresandtables
+%   \addcontentsline{toc}{section}{List of figures and tables}
+%   \newpage}
+
+% Bibliography and citation macros
+% -----------------------------------------------------------------------------
+\bibliography{\jobname.bib}
+\newcommand*{\OWbibliography}{
+  \begingroup
+    \pagebreak
+    \singlespacing
+    \addcontentsline{toc}{section}{\@OWbibheading}
+    \setlength{\bibitemsep}{\parskip} % Make bibliography more readable
+    \printbibliography[title=\@OWbibheading]
+    \onehalfspacing
+  \endgroup}
+% Citation command for the full name (first and last) of the author
+\DeclareCiteCommand{\citeauthorfull}%
+  {\boolfalse{citetracker}%
+   \boolfalse{pagetracker}%
+   \DeclareNameAlias{labelname}{first-last}%
+   \usebibmacro{prenote}}%
+  {\ifciteindex%
+     {\indexnames{labelname}}%
+     {}%
+   \printnames{labelname}}%
+  {\multicitedelim}%
+  {\usebibmacro{postnote}}
+% Add f. for a single following, and ff. for multiple following pages,
+% also don't prefix with p. or pp.
+\renewcommand*{\postnotedelim}{\addcolon}
+\DeclareFieldFormat{postnote}{#1}
+\DeclareFieldFormat{multipostnote}{#1}
+\renewcommand*{\sqspace}{}
+\DefineBibliographyStrings{english}{%
+  sequens = {f\adddot},
+  sequentes = {ff\adddot}}
+\renewcommand*{\multicitedelim}{\addsemicolon\space}
+% Some convenience citation commands,
+% italic instead of quotes for titles
+\DeclareFieldFormat*{citetitle}{\emph{#1}}
+\newcommand{\parencitetitle}[1]{(\citetitle{#1})}
+\newcommand{\citeauthoryear}[1]{\citeauthor{#1} (\citeyear{#1})}
+\newcommand{\citetitleauthor}[1]{\citetitle{#1} \parencite{#1}}
+% Moewe's suggestion of instead adapting the \cite command.
+\renewbibmacro*{cite}{%
+\ifboolexpr{test {\ifentrytype{inreference}} and not test {\iffieldundef{crossref}}}
+  {\entrydata{\thefield{crossref}}{%
+     \printfield{shorthand}}%
+   \setunit{\addcolon\space}%
+   \usebibmacro{cite:label}}%
+  {%
+  \iffieldundef{shorthand}
+    {\ifthenelse{\ifciteibid\AND\NOT\iffirstonpage}
+       {\usebibmacro{cite:ibid}}
+       {\ifthenelse{\ifnameundef{labelname}\OR\iffieldundef{labelyear}}
+          {\usebibmacro{cite:label}%
+           \setunit{\addspace}%
+           \usebibmacro{cite:labelyear+extrayear}%
+           \usebibmacro{cite:reinit}}
+          {\iffieldequals{namehash}{\cbx@lasthash}
+             {\ifthenelse{\iffieldequals{labelyear}{\cbx@lastyear}\AND
+                          \(\value{multicitecount}=0\OR\iffieldundef{postnote}\)}
+                {\setunit{\addcomma}%
+                 \usebibmacro{cite:extrayear}}
+                {\setunit{\compcitedelim}%
+                 \usebibmacro{cite:labelyear+extrayear}%
+                 \savefield{labelyear}{\cbx@lastyear}}}
+             {\printnames{labelname}%
+              \setunit{\nameyeardelim}%
+              \usebibmacro{cite:labelyear+extrayear}%
+              \savefield{namehash}{\cbx@lasthash}%
+              \savefield{labelyear}{\cbx@lastyear}}}}}
+    {\usebibmacro{cite:shorthand}%
+     \usebibmacro{cite:reinit}}}%
+  \setunit{\multicitedelim}}
+
+% For formatting source code listings
+% To use it, XeLaTeX needs to be invoked with "-shell-escape".
+% Because of that, disabled by default.
+% -----------------------------------------------------------------------------
+% \newmintedfile[rubycode]{ruby}{
+%   bgcolor=lightgray,
+%   fontsize=\tiny,
+%   linenos=true,
+%   numberblanklines=true,
+%   numbersep=12pt,
+%   numbersep=5pt,
+%   gobble=0,
+%   frame=leftline,
+%   framerule=0.4pt,
+%   framesep=4mm,
+%   funcnamehighlighting=true,
+%   tabsize=2,
+%   obeytabs=false,
+%   mathescape=false,
+%   samepage=true,
+%   showspaces=false,
+%   showtabs=false,
+%   texcl=false,
+% }
+
+% Things having to do with Arabic typesetting
+% -----------------------------------------------------------------------------
+\setotherlanguage{arabic}
+\newfontfamily\arabicfont[Script=Arabic,Scale=1.1]{Amiri}
+% Redefine \textarabic{} to always be upright
+\let\oldtextarabic\textarabic
+\renewcommand{\textarabic}{\upshape\oldtextarabic}
+% Redefine \textarabic{} to have bigger linespacing to accomodate the taškīl.
+\def\ara{\doublespacing\textarabic}
+\setmainfont[Ligatures=TeX]{Charis SIL}
+\setmonofont{Courier New}
+\setsansfont{DejaVu Sans}
+
+% Combined list of figures and tables,
+% see http://tex.stackexchange.com/questions/258501/how-to-make-a-combined-list-of-figures-and-tables/258516#258516
+% -----------------------------------------------------------------------------
+\newlistof{figuresandtables}{loft}{List of figures and tables}
+% Change the file extension of both lot and lof
+\def\ext@figure{loft}
+\def\ext@table{loft}
+% Store the original `\thefigure` and `\thetable`
+\let\tohe@thefigure\thefigure
+\let\tohe@thetable\thetable
+% Redefine them to contain a "dummy" `\tohe@list...`
+\def\thefigure{\tohe@listfig\tohe@thefigure}
+\def\thetable{\tohe@listtab\tohe@thetable}
+% Make the two dummy commands truly dummy
+\let\tohe@listfig\relax
+\let\tohe@listtab\relax
+% Store the original `\listoffiguresandtables`
+\let\tohe@listoffiguresandtables\listoffiguresandtables
+% Redefine it in such a way that the dummy commands insert "Fig." or "Tab." respectively
+\def\listoffiguresandtables{%
+  \begingroup
+  \def\tohe@listfig{Figure~}
+  \def\tohe@listtab{Table~}
+  \tohe@listoffiguresandtables
+  \endgroup}
+% Change \listoffiguresandtables spacing
+\setlength{\cftfignumwidth}{5.5em}
+\setlength{\cfttabnumwidth}{5.5em}
+\setlength{\cftfigindent}{1pt}
+\setlength{\cfttabindent}{0pt}
+
+% Autoref settings
+% -----------------------------------------------------------------------------
+% \def\subsubsectionautorefname{chapter}
+% \def\subsectionautorefname{chapter}
+% \def\sectionautorefname{chapter}
+% \def\figureautorefname{figure}
+% \def\tableautorefname{table}
+% \def\appendixautorefname{appendix}
+% \def\Autoref#1{%
+%   \begingroup
+%   \edef\reserved@a{\cpttrimspaces{#1}}%
+%   \ifcsndefTF{r@#1}{%
+%     \xaftercsname{\expandafter\testreftype\@fourthoffive}
+%       {r@\reserved@a}.\\{#1}%
+%   }{%
+%     \ref{#1}%
+%   }%
+%   \endgroup
+% }
+% \def\testreftype#1.#2\\#3{%
+%   \ifcsndefTF{#1autorefname}{%
+%     \def\reserved@a##1##2\@nil{%
+%       \uppercase{\def\ref@name{##1}}%
+%       \csn@edef{#1autorefname}{\ref@name##2}%
+%       \autoref{#3}%
+%     }%
+%     \reserved@a#1\@nil
+%   }{%
+%     \autoref{#3}%
+%   }%
+% }
