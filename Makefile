@@ -1,24 +1,42 @@
-SHELL:=/bin/bash -O globstar
+# SHELL:=/bin/bash -O globstar
 
-PROJECT=mws
+MAIN=mws
+SOURCES=Makefile $(wildcard *.sty *.tex)
+FIGURES:=$(shell find images/* -type f)
 
-TEX=xelatex
+LATEXMK=latexmk
+LATEX=xelatex
 BIBTEX=biber
-BUILDTEX=$(TEX) $(PROJECT).tex
 
-TMPFILES={*.{aux,log,out,toc,blg,bbl,bcf,xml,html,odt,docx,zip,~lock*},*{synctex*,~,-blx.*}}
-OUTFILES=*.pdf
+LATEXMKOPTS=-pdf
+LATEXOPTS=-synctex=1 # --shell-escape
 
-pdf:
-	$(BUILDTEX)
+NONSTOP=--interaction=batchmode
+CONTINUOUS=-pvc
 
-bib:
-	$(BIBTEX) $(PROJECT)
+all: $(MAIN).pdf
 
-all: pdf bib pdf
+.refresh:
+	touch .refresh
 
-clean-all:
-	rm -f $(TMPFILES) $(OUTFILES)
+$(MAIN).pdf: .refresh $(SOURCES) $(FIGURES)
+	$(LATEXMK) $(LATEXMKOPTS) $(CONTINUOUS) -pdflatex="$(LATEX) $(LATEXOPTS) $(NONSTOP) %O %S" $(MAIN)
+
+force:
+	touch .refresh
+	rm $(MAIN).pdf
+	$(LATEXMK) $(LATEXMKOPTS) $(CONTINUOUS) -pdflatex="$(LATEX) $(LATEXOPTS)" $(MAIN)
 
 clean:
-	rm -f $(TMPFILES)
+	$(LATEXMK) -C $(MAIN)
+	rm -f $(MAIN).pdfsync $(MAIN).synctex.gz
+	rm -f *~ *.tmp
+	rm -f *.bbl *.blg *.aux *.end *.fls *.log *.out *.fdb_latexmk *.run.xml
+
+once:
+	$(LATEXMK) $(LATEXMKOPTS) -pdflatex="$(LATEX) $(LATEXOPTS) $(NONSTOP) %O %S" $(MAIN)
+
+debug:
+	$(LATEX) $(LATEXOPTS) $(MAIN)
+
+.PHONY: clean force once all

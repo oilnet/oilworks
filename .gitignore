@@ -1,4 +1,6 @@
 *.aux
+*.fdb_latexmk
+*.fls
 *.log
 *.out
 *.toc
@@ -10,8 +12,9 @@
 *.odt
 *.docx
 *.zip
-*~
-*.~lock*
-*-blx.*
-*synctex*
 *.pdf
+*.~lock*
+*~
+*synctex*
+*-blx.*
+.refresh
