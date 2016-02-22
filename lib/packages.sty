@@ -1,0 +1,105 @@
+% Needs to be set h̲e̲r̲e̲  for dependency reasons
+% -----------------------------------------------------------------------------
+%\def\OWdefaultlanguage#1{\def\@OWdefaultlanguage{#1}}
+%\def\OWlanguagevariant#1{\def\@OWlanguagevariant{#1}}
+
+% Universal Fixes
+% -----------------------------------------------------------------------------
+%\usepackage{fixltx2e} % Corrects LaTeX2e bugs and quirks
+%\usepackage{ifxetex} % Checks if XeTeX/XeLaTeX is the compiler-of-choice
+
+% Unicode, i18n, etc.
+% -----------------------------------------------------------------------------
+%\usepackage{polyglossia} % Also loads bidi!
+
+% Layout and Format
+% -----------------------------------------------------------------------------
+%\usepackage{csquotes} % Fixes inline and display quotations - doesn't work atm, reason unknown
+%\usepackage[absolute]{textpos} % For "\textblock"s, which can be freely  positioned on the page
+%\usepackage[a4paper]{geometry} % Or letterpaper, etc…
+%\usepackage[ngerman]{datetime} % For titlepage only
+%\usepackage{courier} % Changes fixed-width fonts only
+%\usepackage{setspace} % \single-, \onehalf- and \doublespacing
+%\usepackage{multicol}
+%\usepackage{import}
+% \usepackage{tocstyle} % Says it's alpha…
+%\usepackage[nottoc,numbib]{tocbibind}
+%\usepackage{graphicx}
+%\usepackage{pdfpages}
+%\usepackage{geometry}
+%\usepackage{paralist}
+%\usepackage{array}
+%\usepackage{placeins}
+%\usepackage[absolute]{textpos}
+%\usepackage{parcolumns}
+%\usepackage[titles]{tocloft} % For a combined list of tables and figures
+
+% Math
+% -----------------------------------------------------------------------------
+%\usepackage{amsmath} % Swiss-knife math package
+
+% Graphics
+% -----------------------------------------------------------------------------
+%\usepackage{graphicx} % Allows inserting of graphics and images
+
+% Tables and Figures
+% -----------------------------------------------------------------------------
+%\usepackage{booktabs} % For drawing nice tables with proper line weights
+%\usepackage{flafter} % To ensure that figures float only after they are defined/referenced; also loads float!
+%\usepackage{tabu} % Provides better control for tables and column widths
+%\usepackage{longtable} % Allows tables to span across pages - integrates with tabu
+%\usepackage{multicol} % Allows spanning columns in tables
+%\usepackage{wrapfig}
+
+% Referencing
+% -----------------------------------------------------------------------------
+\usepackage[
+  citestyle=authoryear-icomp,
+  bibstyle=authoryear,
+  backend=biber,
+  hyperref=true,
+  sorting=nyt,
+  ibidpage=true,
+  dashed=true,
+  mergedate=maximum,
+  mincrossrefs=1,
+]{biblatex}
+\bibliography{\jobname.bib}
+%\usepackage[longnamesfirst]{natbib} % Reimplements \cite to work with author-year and numerical citations
+
+% For autoref, wants to be here and not higher up…
+% -----------------------------------------------------------------------------
+%\usepackage{catoptions}
+
+% Fonts and Typography
+% -----------------------------------------------------------------------------
+\usepackage{ellipsis} % Fixes space uneveness around ellipses
+\usepackage{url} % Allows encapsulated URLs to break across lines
+\usepackage[
+  hidelinks,
+  hypertexnames=false, % ?
+  plainpages=false,    % ?
+  colorlinks=true,     % light 'em up!
+  citecolor=black,     % biblatex citations.
+  linkcolor=coolblack, % footnote numbers.
+  filecolor=coolblack, % links to local files.
+  urlcolor=coolblack,  % links to websites.
+]{hyperref}
+\usepackage{fontspec} % Allows usage of system opentype/truetype fonts
+\usepackage{color}
+\usepackage{titling}
+\usepackage{url}
+\usepackage{xcolor}
+\usepackage{colortbl}
+
+% For formatting source code listings
+% To use it, XeLaTeX needs to be invoked with "-shell-escape".
+% Because of that, disabled by default.
+% -----------------------------------------------------------------------------
+%\usepackage[section]{minted}
+%\usepackage{mdframed}
+
+% Things to use during development
+% -----------------------------------------------------------------------------
+%\usepackage{blindtext}
+%\usepackage{todonotes}
