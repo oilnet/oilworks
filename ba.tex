@@ -1,44 +1,34 @@
-%!TEX TS-program = xelatex
-
 \documentclass[12pt,a4paper,parskip=half]{scrartcl}
-
-%\usepackage{packages}
-%\usepackage{macros}
-
-%\hypersetup{
-%  pdftitle={Der Titel der Arbeit},pdfauthor={Vorname Nachname},
-%  pdfcreator={XeLaTeX},pdfproducer={XeLaTeX},
-%  pdfsubject={Worum es geht},
-%  pdfkeywords={schlüsselwörter aus der arbeit}
-%}
+\usepackage{oilworks}
 
 \begin{document}
 
-%\university{Universität Leipzig}
-%\faculty{Fakultät für Geschichte, Kunst- und Orientwissenschaften}
-%\institute{Orientalisches Institut}
-%\title{Der Titel der Arbeit}
-%\subtitle{Untertitel mit wesentlich mehr Wörtern und in kleinerer Schrift}
-%\typeofwork{Hausarbeit / BA / MA / etc.}
-%\firstassessor{Prof. Erster Gutachter}
-%\secondassessor{Dr. Zweiter Gutachter}
-%\author{Vorname Nachname}
-%\matriculationnumber{Matrikelnummer}
-%\emailaddress{E-Mail}
-%\streetandhousenumber{Straße Hausnummer}
-%\date{\the\day. \monthnamengerman\ \the\year}
-%\postcodeandcity{PLZ Ort}
-%\workperiodstart{Anfangsdatum}
-%\workperiodend{Enddatum}
-%\makeheader
+\OWuniversity{Universität Leipzig}
+\OWfaculty{Fakultät für Geschichte, Kunst- und Orientwissenschaften}
+\OWinstitute{Orientalisches Institut}
+\OWtitle{Der Titel der Arbeit}
+\OWsubtitle{Untertitel mit wesentlich mehr Wörtern und in kleinerer Schrift}
+\OWtypeofwork{Hausarbeit / BA / MA / etc.}
+\OWfirstassessor{Prof. Erster Gutachter}
+\OWsecondassessor{Dr. Zweiter Gutachter}
+\OWauthor{Vorname Nachname}
+\OWmatriculationnumber{Matrikelnummer}
+\OWemailaddress{E-Mail}
+\OWstreetandhousenumber{Straße Hausnummer}
+\OWdate{\the\day. \monthnamengerman\ \the\year}
+\OWpostcodeandcity{PLZ Ort}
+\OWworkperiodstart{Anfangsdatum}
+\OWworkperiodend{Enddatum}
+
+\OWmaketitle
+
+\OWtoc
 
 % Hier gehts richtig los!
 
 \section{Erstes Kapitel}
 
-%\cite{L¹} hat gesagt, dass soundso!
-
-Proin volutpat nunc nec dignissim porttitor. Phasellus ornare lorem ac nibh placerat egestas. Vestibulum varius, libero at venenatis posuere, odio ligula volutpat libero, sed convallis mi odio ut quam. Duis scelerisque ante ornare, malesuada risus vitae, pulvinar odio. Duis ut elementum purus. Phasellus eu mauris in nibh gravida finibus nec at enim. Proin id nisi vel risus luctus eleifend semper eu lorem. Sed arcu tellus, ultricies id libero id, mattis lacinia mi. Nunc vehicula facilisis sollicitudin. Donec non nunc erat. Morbi iaculis massa eu sagittis aliquet. Ut vitae arcu non risus pulvinar consectetur id ac dui. Mauris rhoncus venenatis eros, eu semper eros dignissim quis.
+Also Peter und der Wolf, naja, ist ja auch egal. Noch mal. Auf jeden Fall: \cite{L¹} hat gesagt, dass soundso! Proin volutpat nunc nec dignissim porttitor. Phasellus ornare lorem ac nibh placerat egestas. Vestibulum varius, libero at venenatis posuere, odio ligula volutpat libero, sed convallis mi odio ut quam. Duis scelerisque ante ornare, malesuada risus vitae, pulvinar odio. Duis ut elementum purus. Phasellus eu mauris in nibh gravida finibus nec at enim. Proin id nisi vel risus luctus eleifend semper eu lorem. Sed arcu tellus, ultricies id libero id, mattis lacinia mi. Nunc vehicula facilisis sollicitudin. Donec non nunc erat. Morbi iaculis massa eu sagittis aliquet. Ut vitae arcu non risus pulvinar consectetur id ac dui. Mauris rhoncus venenatis eros, eu semper eros dignissim quis.
 
 \subsection{Unterkapitel (zweite Ebene)}
 
@@ -48,7 +38,8 @@ Curabitur eros quam, malesuada eu tellus eget, fermentum accumsan enim. Sed cons
 
 Integer malesuada sem in gravida posuere. Nulla facilisi. Vestibulum eu vulputate neque. In rhoncus purus in libero suscipit vestibulum. Pellentesque in erat vitae massa elementum blandit in et nulla. Integer ligula libero, mattis ac cursus ut, egestas sit amet odio. Nam ultricies erat sit amet facilisis tincidunt. Praesent congue felis enim, vitae rutrum elit vehicula a. Proin vestibulum ex id dui rhoncus gravida.
 
-%\makeworkscited
+\OWbibheading{Literaturverzeichnis}
+\OWbibliography
 
 \appendix
 
