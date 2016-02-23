@@ -1,39 +1,22 @@
 Oilworks
 ========
 
-# Requirements #
-
-- XeLaTeX. Under Debian-based Linuxes (Ubuntu, Mint, etc.), just `apt-get install texlive-full` and you'll be all-set.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 A LaTeX style formatter package that allows users to create LaTeX documents conforming to the Oriental Institute of Leipzig's style requirements.
 
-# How to Install #
+# Requirements #
 
-## Manually ##
+- XeLaTeX. Under Debian-based Linuxes (Ubuntu, Mint, etc.), just `sudo apt-get install texlive-full` and you'll be all-set
+- GNU make if you want to use the Makefile (`sudo apt-get install build-essential`)
 
-If you want to install the package manually then just download the `.sty` file and place it in the texmf folder for use with all of your LaTeX file needs. If you just want to use it on one project, just place it in your project folder for local access.
+# How to use #
 
-# How to Use #
-
-The Oilworks package does not require that you use any other packages, though it allows you to do so. The packages that are utilized by Oilworks are: geometry, babel, csquotes, biblatex, and color, plus some others. In order to use the features provided by Oilworks, the first thing you have to do is to use the package in your LaTeX project. To do this use the following command:
-    
-    \usepackage{oilworks.sty}
+- `mkdir MyNewDocument`
+- `cd MyNewDocument`
+- `git init .`
+- `git submodule add git@github.com:sixtyfive/oilworks.git`
+- `cp oilworks/sample.{bib,tex} .` (rename these as you wish, e.g. to MyNewName)
+- `cat oilworks/Makefile | sed s/sample/MyNewName/g > Makefile` (the project name needs to be changed!)
+- `make once` (or anything of the other rules in the Makefile
 
 ## Paragraph Formatting ##
 
@@ -47,21 +30,7 @@ Place either of these commands before the begin document section of your LaTeX f
 
 ## Citing and Sources ##
 
-This package uses BibTeX because it is the most commonly used for bibliographies. All of your sources
-should be kept in a .bib file and should be formatted to meet the BibTeX standards. To learn more about
-BibTeX and its features, look at this website http://en.wikipedia.org/wiki/BibTeX. Once your file is
-set up you need to tell mla13 which file to look at. To do this type the following before the begin document
-section of your LaTeX project:
-   
-    \sources{NameOfBibFile.bib}
-
-To cite a source, the main command that you should use is the standard cite command. This is the one
-that fits with MLA citation style. Here is an example of how to use this command:
-
-No Page Number: `\cite{Name of Source}`
-Page Number: `\cite[Page]{Name of Source}`
-
-Finally, add `\makeworkscited` at the end of your document (but before `\end{document}`) in order to include your works cited.
+This package uses Biber. All of your sources should be kept in a .bib file and should be formatted to meet the Biblatex standards. The .bib file should be called the same as the main document file.
 
 # Comments, Suggestions, or Anything Else #
 
