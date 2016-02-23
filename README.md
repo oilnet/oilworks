@@ -20,13 +20,12 @@ A LaTeX style formatter package that allows users to create LaTeX documents conf
 
 ## Paragraph Formatting ##
 
-Paragraph formatting is standard and coincides with the measures put in place by MLA style. The font used
-is Charis SIL for Latin parts of the document and is of size 12. Arabic is typeset in Amiri. In order to change the justification of the paper, you have 3 options: (1) left justification, (2) right justification, or (3) justified. Justified is the default because that is also the default setting when using LATEX. If you would like to change the justification settings of your paper, use the following commands:
+Paragraph formatting is pretty standard as concerns German typesetting conventions. The font used is Charis SIL for Latin parts of the document and is of size 12. Arabic is typeset in Amiri. In order to change the justification of the paper, you have 3 options: (1) left justification, (2) right justification, or (3) justified. Justified is the default because it is also the LaTeX default setting. If you would like to change the justification settings of your paper, use the following commands:
 
 To make the file right justified use `\raggedleft`
 To make the file left justified use `\raggedright`
 
-Place either of these commands before the begin document section of your LaTeX file.
+Place either of these commands before the begin document section of the main document file.
 
 ## Citing and Sources ##
 
