@@ -1,6 +1,6 @@
 # SHELL:=/bin/bash -O globstar
 
-MAIN=mws
+MAIN=ba
 SOURCES=Makefile $(wildcard *.sty *.tex)
 FIGURES:=$(shell find images/* -type f)
 
@@ -24,8 +24,8 @@ $(MAIN).pdf: .refresh $(SOURCES) $(FIGURES)
 
 force:
 	touch .refresh
-	rm $(MAIN).pdf
-	$(LATEXMK) $(LATEXMKOPTS) $(CONTINUOUS) -pdflatex="$(LATEX) $(LATEXOPTS)" $(MAIN)
+	rm -f $(MAIN).pdf
+	$(LATEXMK) $(LATEXMKOPTS) -pdflatex="$(LATEX) $(LATEXOPTS)" $(MAIN)
 
 clean:
 	$(LATEXMK) -C $(MAIN)
