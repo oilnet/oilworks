@@ -1,6 +1,26 @@
 Oilworks
 ========
 
+# Requirements #
+
+- XeLaTeX. Under Debian-based Linuxes (Ubuntu, Mint, etc.), just `apt-get install texlive-full` and you'll be all-set.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 A LaTeX style formatter package that allows users to create LaTeX documents conforming to the Oriental Institute of Leipzig's style requirements.
 
 # How to Install #
