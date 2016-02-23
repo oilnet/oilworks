@@ -1,6 +1,6 @@
 # SHELL:=/bin/bash -O globstar
 
-MAIN=ba
+MAIN=beispiel
 SOURCES=Makefile $(wildcard *.sty *.tex)
 FIGURES:=$(shell find images/* -type f)
 
