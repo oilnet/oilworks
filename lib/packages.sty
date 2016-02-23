@@ -1,55 +1,56 @@
-% Needs to be set h̲e̲r̲e̲  for dependency reasons
-% -----------------------------------------------------------------------------
-%\def\OWdefaultlanguage#1{\def\@OWdefaultlanguage{#1}}
-%\def\OWlanguagevariant#1{\def\@OWlanguagevariant{#1}}
-
 % Universal Fixes
 % -----------------------------------------------------------------------------
-%\usepackage{fixltx2e} % Corrects LaTeX2e bugs and quirks
-%\usepackage{ifxetex} % Checks if XeTeX/XeLaTeX is the compiler-of-choice
+\usepackage{fixltx2e} % Corrects LaTeX2e bugs and quirks
+\usepackage{ifxetex} % Checks if XeTeX/XeLaTeX is the compiler-of-choice
 
 % Unicode, i18n, etc.
+% Also, set document's main language
 % -----------------------------------------------------------------------------
-%\usepackage{polyglossia} % Also loads bidi!
+\usepackage{polyglossia} % Also loads bidi!
+\if\relax\detokenize{\@OWlanguagevariant}\relax
+  \setdefaultlanguage[variant=\@OWlanguagevariant]{\@OWdefaultlanguage}
+\else
+  \setdefaultlanguage{\@OWdefaultlanguage}
+\fi
 
 % Layout and Format
 % -----------------------------------------------------------------------------
-%\usepackage{csquotes} % Fixes inline and display quotations - doesn't work atm, reason unknown
-%\usepackage[absolute]{textpos} % For "\textblock"s, which can be freely  positioned on the page
-%\usepackage[a4paper]{geometry} % Or letterpaper, etc…
-%\usepackage[ngerman]{datetime} % For titlepage only
-%\usepackage{courier} % Changes fixed-width fonts only
-%\usepackage{setspace} % \single-, \onehalf- and \doublespacing
-%\usepackage{multicol}
-%\usepackage{import}
+\usepackage{csquotes} % Fixes inline and display quotations - doesn't work atm, reason unknown
+\usepackage[absolute]{textpos} % For "\textblock"s, which can be freely  positioned on the page
+\usepackage[a4paper]{geometry} % Or letterpaper, etc…
+\usepackage[ngerman]{datetime} % For titlepage only
+\usepackage{courier} % Changes fixed-width fonts only
+\usepackage{setspace} % \single-, \onehalf- and \doublespacing
+\usepackage{multicol}
+\usepackage{import}
 % \usepackage{tocstyle} % Says it's alpha…
-%\usepackage[nottoc,numbib]{tocbibind}
-%\usepackage{graphicx}
-%\usepackage{pdfpages}
-%\usepackage{geometry}
-%\usepackage{paralist}
-%\usepackage{array}
-%\usepackage{placeins}
-%\usepackage[absolute]{textpos}
-%\usepackage{parcolumns}
-%\usepackage[titles]{tocloft} % For a combined list of tables and figures
+\usepackage[nottoc,numbib]{tocbibind}
+\usepackage{graphicx}
+\usepackage{pdfpages}
+\usepackage{geometry}
+\usepackage{paralist}
+\usepackage{array}
+\usepackage{placeins}
+\usepackage[absolute]{textpos}
+\usepackage{parcolumns}
+\usepackage[titles]{tocloft} % For a combined list of tables and figures
 
 % Math
 % -----------------------------------------------------------------------------
-%\usepackage{amsmath} % Swiss-knife math package
+\usepackage{amsmath} % Swiss-knife math package
 
 % Graphics
 % -----------------------------------------------------------------------------
-%\usepackage{graphicx} % Allows inserting of graphics and images
+\usepackage{graphicx} % Allows inserting of graphics and images
 
 % Tables and Figures
 % -----------------------------------------------------------------------------
-%\usepackage{booktabs} % For drawing nice tables with proper line weights
-%\usepackage{flafter} % To ensure that figures float only after they are defined/referenced; also loads float!
-%\usepackage{tabu} % Provides better control for tables and column widths
-%\usepackage{longtable} % Allows tables to span across pages - integrates with tabu
-%\usepackage{multicol} % Allows spanning columns in tables
-%\usepackage{wrapfig}
+\usepackage{booktabs} % For drawing nice tables with proper line weights
+\usepackage{flafter} % To ensure that figures float only after they are defined/referenced; also loads float!
+\usepackage{tabu} % Provides better control for tables and column widths
+\usepackage{longtable} % Allows tables to span across pages - integrates with tabu
+\usepackage{multicol} % Allows spanning columns in tables
+\usepackage{wrapfig}
 
 % Referencing
 % -----------------------------------------------------------------------------
@@ -65,11 +66,14 @@
   mincrossrefs=1,
 ]{biblatex}
 \bibliography{\jobname.bib}
-%\usepackage[longnamesfirst]{natbib} % Reimplements \cite to work with author-year and numerical citations
+
+% Reimplements \cite to work with author-year and numerical citations
+% Unfortunately, clashes with biblatex - possible to resolve the clash?
+%\usepackage[longnamesfirst]{natbib} 
 
 % For autoref, wants to be here and not higher up…
 % -----------------------------------------------------------------------------
-%\usepackage{catoptions}
+\usepackage{catoptions}
 
 % Fonts and Typography
 % -----------------------------------------------------------------------------
@@ -101,5 +105,5 @@
 
 % Things to use during development
 % -----------------------------------------------------------------------------
-%\usepackage{blindtext}
-%\usepackage{todonotes}
+\usepackage{blindtext}
+\usepackage{todonotes}

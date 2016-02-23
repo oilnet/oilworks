@@ -2,19 +2,23 @@
   \begin{titlepage}
     \begin{center}
       \pagestyle{empty}
-      \selectlanguage{german} % Must be German according to UL style guide.
+      \selectlanguage{german} % Must be German according to UL style guide.      
+
       \begingroup
         {\LARGE \@OWuniversity} \\
         {\normalsize \@OWfaculty} \\
         {\Large \@OWinstitute} \\
       \endgroup
       \vspace*{0.5cm}
-      \includegraphics[height=150pt,width=150pt]{oilworks/uofl_official_seal}\\
+      
+      \includegraphics[height=150pt,width=150pt]{images/uofl_official_seal}\\
       \vspace*{0.35cm}
+
       \begingroup
         {\LARGE \@OWtypeofwork} \\
       \endgroup
       \vspace*{1.25cm}
+
       \begingroup
         \if\relax\detokenize{\@subtitle}\relax
           {\LARGE \@title} \\
@@ -25,17 +29,19 @@
         \fi
       \endgroup
       \vspace*{1.25cm}
+
       \small
       \begingroup
-        \if\relax\detokenize{\@OWfirstassessor}\relax
+        \if\relax\detokenize{\@OWsecondassessor}\relax
+          Gutachter: \@OWfirstassessor \\
+        \else
           1. Gutachter: \@OWfirstassessor \\
           2. Gutachter: \@OWsecondassessor \\
-        \else
-          Gutachter: \@OWassessor \\
         \fi
       \endgroup
       \vspace*{1.25cm}
-      \begin{textblock*}{50mm}(30mm,228mm)
+
+     \begin{textblock*}{50mm}(30mm,228mm)
       \begin{flushleft}
       \begingroup
         Vorgelegt von \\
@@ -48,7 +54,9 @@
       \endgroup
       \end{flushleft}
       \end{textblock*}
-      \if\relax\detokenize{\OWworkperiodstart}\relax
+ 
+     \if\relax\detokenize{\OWworkperiodstart}\relax
+     \else % Why???
         \vspace*{1.25cm}
         \begin{textblock*}{50mm}(142mm,258mm)
         \begin{flushleft}
@@ -61,7 +69,9 @@
         \end{flushleft}
         \end{textblock*}
       \fi
-      \selectlanguage{\@OWdefaultlanguage} % Back to whatever the document is written in.
+
+     \selectlanguage{\@OWdefaultlanguage} % Back to whatever the document is written in.
+ 
     \end{center}
   \end{titlepage}
   \clearpage
