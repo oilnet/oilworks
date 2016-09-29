@@ -13,9 +13,13 @@ echo "What is your project's name? Only lowercase, no spaces, please: "
 read NAME
 cp oilworks/sample.bib $NAME.bib
 cp oilworks/sample.tex $NAME.tex
-ln -s oilworks/images
 ln -s oilworks/lib
+mkdir -p images
+cp oilworks/images/uofl_official_seal.png images/
+cp oilworks/.gitignore .
 cat oilworks/Makefile | sed s/sample/$NAME/g > Makefile
+git add .
+git commit -a -m "Initial commit."
 
 echo "All done! Type 'make once' to build $NAME.pdf."
 echo "Have a nice day!"
