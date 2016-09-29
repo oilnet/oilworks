@@ -14,9 +14,10 @@ A LaTeX style formatter package that allows users to create LaTeX documents conf
 - `cd MyNewDocument`
 - `git init .`
 - `git submodule add git@github.com:sixtyfive/oilworks.git`
-- `cp oilworks/sample.{bib,tex} .` (rename these as you wish, e.g. to MyNewName)
+- `cp oilworks/sample.{bib,tex} .` (rename these as you wish, e.g. to MyNewName.{bib,tex},
+  but make sure that both files, except of course the extension, get the same name)
 - `cat oilworks/Makefile | sed s/sample/MyNewName/g > Makefile` (the project name needs to be changed!)
-- `make once` (or anything of the other rules in the Makefile
+- `make once` (or any of the other rules in the Makefile)
 
 ## Paragraph Formatting ##
 
