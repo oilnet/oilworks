@@ -5,8 +5,10 @@ A LaTeX style formatter package that allows users to create LaTeX documents conf
 
 # Requirements #
 
-- XeLaTeX. Under Debian-based Linuxes (Ubuntu, Mint, etc.), just `sudo apt-get install texlive-full` and you'll be all-set
-- GNU make if you want to use the Makefile (`sudo apt-get install build-essential`)
+- XeLaTeX. Under Debian-based Linuxes (Ubuntu, Mint, etc.), just `sudo apt install texlive-full` and you'll be all-set
+- GNU make if you want to use the Makefile (`sudo apt install build-essential`)
+
+(Yes, these two commands above read `apt`, not `apt-get`. My subtle way of saying that things might not work on Debian systems older than Jessie...)
 
 # How to use #
 
