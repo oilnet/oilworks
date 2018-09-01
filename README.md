@@ -5,11 +5,11 @@ A LaTeX style formatter package that allows users to create LaTeX documents conf
 
 # Requirements #
 
-- XeLaTeX. Under Debian-based Linuxes (Ubuntu, Mint, etc.), just `sudo apt install texlive-full` and you'll be all-set
-- Biber. For some reason, not always (?) included with `texlive-full` - `sudo apt install biber`
-- GNU make if you want to use the Makefile (`sudo apt install build-essential`)
+- XeLaTeX. Under Debian-based Linuxes (Ubuntu, Mint, etc.), just `sudo apt install texlive-full` and you'll be all-set. Under Solus OS, similarly, just type `sudo eopkg it texlive-all`.
+- Biber. For some reason, not always (?) included with `texlive-full` - `sudo apt install biber` or `sudo eopkg it texlive-full`.
+- GNU make if you want to use the Makefile (`sudo apt install build-essential` or `sudo eopkg it -c system.devel`)
 
-(Yes, the commands above read `apt`, not `apt-get`. My subtle way of saying that things might not work on Debian systems older than Jessie...)
+(Yes, the commands above read `apt`, not `apt-get`. My subtle way of saying that things might not work on Debian-based systems older than Jessie. I'm using Solus OS these days anyways and encourage anyone to make the jump for desktop/laptop machines.)
 
 # How to use #
 
