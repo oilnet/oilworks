@@ -10,17 +10,19 @@
         {\Large \@OWinstitute} \\
       \endgroup
       \vspace*{0.5cm}
-      
+
       \includegraphics[height=150pt,width=150pt]{images/uofl_official_seal}\\
       \vspace*{0.35cm}
 
-      \begingroup
-        {\LARGE \@OWtypeofwork} \\
-      \endgroup
-      \vspace*{1.25cm}
+      \ifdefined\@OWtypeofwork
+        \begingroup
+          {\LARGE \@OWtypeofwork} \\
+        \endgroup
+        \vspace*{1.25cm}
+      \fi
 
       \begingroup
-        \if\relax\detokenize{\@subtitle}\relax
+        \ifx\@subtitle\empty
           {\LARGE \@title} \\
           \vspace{0.2cm}
           {\normalsize \textit{\@subtitle}} \\
@@ -32,45 +34,56 @@
 
       \small
       \begingroup
-        \if\relax\detokenize{\@OWsecondassessor}\relax
-          Gutachter: \@OWfirstassessor \\
-        \else
-          1. Gutachter: \@OWfirstassessor \\
-          2. Gutachter: \@OWsecondassessor \\
+        \ifdefined\@OWfirstassessor
+          \ifdefined\@OWsecondassessor
+            1. Gutachter: \@OWfirstassessor \\
+            2. Gutachter: \@OWsecondassessor \\
+          \else
+            Gutachter: \@OWfirstassessor \\
+          \fi
         \fi
       \endgroup
       \vspace*{1.25cm}
 
-     \begin{textblock*}{50mm}(30mm,228mm)
-      \begin{flushleft}
-      \begingroup
-        Vorgelegt von \\
-        \@author \\
-        Matrikel-Nr.: \@OWmatriculationnumber \\
-        \@OWemailaddress \\
-        \@OWstreetandhousenumber \\
-        \@OWpostcodeandcity \\
-        am \@date \\
-      \endgroup
-      \end{flushleft}
+      \begin{textblock*}{50mm}(30mm,228mm)
+        \begin{flushleft}
+          \begingroup
+            Vorgelegt von \\
+            \@author \\
+            \ifdefined\@OWmatriculationnumber
+              Matrikel-Nr.: \@OWmatriculationnumber \\
+            \fi
+            \ifdefined\@OWemailaddress
+              \@OWemailaddress \\
+            \fi
+            \ifdefined\@OWstreetandhousenumber
+              \@OWstreetandhousenumber \\
+            \fi
+            \ifdefined\@OWpostcodeandcity
+              \@OWpostcodeandcity \\
+            \fi
+            am \@date
+          \endgroup
+        \end{flushleft}
       \end{textblock*}
- 
-     \if\relax\detokenize{\OWworkperiodstart}\relax
-     \else % Why???
+   
+      \ifx\OWworkperiodstart\empty
+        % Nothing
+      \else % Why??? LaTeX sometimes really sucks.
         \vspace*{1.25cm}
         \begin{textblock*}{50mm}(142mm,258mm)
-        \begin{flushleft}
-        \ifdefined\@OWworkperiodstart
-          \begingroup
-            Bearbeitungszeitraum: \\
-            \@OWworkperiodstart--\@OWworkperiodend
-          \endgroup
-        \fi
-        \end{flushleft}
+          \begin{flushleft}
+            \ifdefined\@OWworkperiodstart
+              \begingroup
+                Bearbeitungszeitraum:
+                \@OWworkperiodstart--\@OWworkperiodend
+              \endgroup
+            \fi
+          \end{flushleft}
         \end{textblock*}
       \fi
 
-     \selectlanguage{\@OWdefaultlanguage} % Back to whatever the document is written in.
+      \selectlanguage{\@OWdefaultlanguage} % Back to whatever the document is written in.
  
     \end{center}
   \end{titlepage}
