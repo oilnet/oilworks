@@ -206,14 +206,29 @@
 % Things having to do with Arabic typesetting
 % -----------------------------------------------------------------------------
 \setotherlanguage{arabic}
-\newfontfamily\arabicfont[Path=oilworks/fonts/, UprightFont=*-Regular, BoldFont=*-Bold, Script=Arabic, Scale=1.1]{Scheherazade}
+
+% If you're not happy with Scheherazade because of missing ligatures, the only
+% better alternative (i.e.: which still has proper placement of حركات) is Microsoft's
+% Traditional Arabic which is found in msttcorefonts.
+\newfontfamily\arabicfont[Path=oilworks/fonts/, UprightFont=*-Regular, BoldFont=*-Bold, Script=Arabic, Scale=1.2]{Scheherazade}
+
 % Redefine \textarabic{} to always be upright
 \let\oldtextarabic\textarabic
 \renewcommand{\textarabic}{\upshape\oldtextarabic}
-% Redefine \textarabic{} to have bigger linespacing to accomodate the taškīl.
-\def\ara{\doublespacing\textarabic}
+
+% Redefine \textarabic{} to have bigger linespacing to accomodate the تشكيل.
+% \def\ara{\doublespacing\textarabic} % (not actually needed with Scheherazade, but would be with e.g. Amiri)
+
+% SIL's Charis is the king of transliteration characters, such as the ones used by
+% Deutsche Morgenländische Gesellschaft. If something closer to Times New Roman
+% is desired, SIL's Doulos might be the better font - unfortunately it doesn't as
+% of 9/2018 include italic and/or bold variants.
 \setmainfont[Path=oilworks/fonts/, UprightFont=*-R, ItalicFont=*-I, BoldFont=*-B, BoldItalicFont=*-BI, Ligatures=TeX]{CharisSIL}
-\setmonofont{Courier New}
+
+\setmonofont{Courier New} % Again, from msttcorefonts...
+
+% Andika was designed for learners by SIL, so it might look a little too playful
+% to more seasoned readers. Unfortunately SIL offer no other Latin Sans fonts.
 \setsansfont[Path=oilworks/fonts/, UprightFont=*-R]{Andika}
 
 % Combined list of figures and tables,
