@@ -7,43 +7,50 @@ echo
 echo "Otherwise, please hit ENTER to confirm and continue."
 read
 
-if [ "$(fc-list | grep 'Charis SIL:style=Regular')" == "" ]; then
-  echo "Charis SIL font not installed. Downloading into oilworks directory."; (
+# if [ "$(fc-list | grep 'Charis SIL:style=Regular')" == "" ]; then
+#  echo "Charis SIL font not installed. Downloading into oilworks directory."; (
+  echo "Downloading Charis SIL into oilworks/fonts/ directory."; (
     wget --quiet -O /tmp/Charis.zip https://software.sil.org/downloads/r/charis/CharisSIL-5.000.zip
     cd /tmp
-    unzip /tmp/Charis.zip
+    unzip -q /tmp/Charis.zip
   ); (
     mkdir -p fonts
     cd fonts 
     mv /tmp/Charis*/*.ttf .
     rm -rf /tmp/Charis*
   )
-fi
+# fi
 
-if [ "$(fc-list | grep 'Scheherazade:style=Regular')" == "" ]; then
-  echo "Scheherazade font not installed. Downloading into oilworks directory."; (
+# if [ "$(fc-list | grep 'Scheherazade:style=Regular')" == "" ]; then
+#   echo "Scheherazade font not installed. Downloading into oilworks directory."; (
+  echo "Downloading Scheherazade into oilworks/fonts/ directory."; (
     wget --quiet -O /tmp/Scheherazade.zip https://software.sil.org/downloads/r/scheherazade/Scheherazade-2.100.zip
     cd /tmp
-    unzip /tmp/Scheherazade.zip
+    unzip -q /tmp/Scheherazade.zip
   ); (
     mkdir -p fonts
     cd fonts 
     mv /tmp/Scheherazade*/*.ttf .
     rm -rf /tmp/Scheherazade*
   )
-fi
+# fi
 
-if [ "$(fc-list | grep 'Andika:style=Regular')" == "" ]; then
-  echo "Andika font not installed. Downloading into oilworks directory."; (
+# if [ "$(fc-list | grep 'Andika:style=Regular')" == "" ]; then
+#   echo "Andika font not installed. Downloading into oilworks directory."; (
+  echo "Downloading Andika into oilworks/fonts/ directory."; (
     wget --quiet -O /tmp/Andika.zip https://software.sil.org/downloads/r/andika/Andika-5.000.zip
     cd /tmp
-    unzip /tmp/Andika.zip
+    unzip -q /tmp/Andika.zip
   ); (
     mkdir -p fonts
     cd fonts 
     mv /tmp/Andika*/*.ttf .
     rm -rf /tmp/Andika*
   )
+# fi
+
+if [ "fc-list | grep 'cour.ttf'" == "" ]; then
+  echo "If you require a monospaced font, download and install msttcorefonts or change macros.sty accordingly."
 fi
 
 (
