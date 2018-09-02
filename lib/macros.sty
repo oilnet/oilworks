@@ -206,15 +206,15 @@
 % Things having to do with Arabic typesetting
 % -----------------------------------------------------------------------------
 \setotherlanguage{arabic}
-\newfontfamily\arabicfont[Script=Arabic,Scale=1.1]{Amiri}
+\newfontfamily\arabicfont[Path=oilworks/fonts/, UprightFont=*-Regular, BoldFont=*-Bold, Script=Arabic, Scale=1.1]{Scheherazade}
 % Redefine \textarabic{} to always be upright
 \let\oldtextarabic\textarabic
 \renewcommand{\textarabic}{\upshape\oldtextarabic}
 % Redefine \textarabic{} to have bigger linespacing to accomodate the taškīl.
 \def\ara{\doublespacing\textarabic}
-\setmainfont[Ligatures=TeX]{Charis SIL}
+\setmainfont[Path=oilworks/fonts/, UprightFont=*-R, ItalicFont=*-I, BoldFont=*-B, BoldItalicFont=*-BI, Ligatures=TeX]{CharisSIL}
 \setmonofont{Courier New}
-\setsansfont{DejaVu Sans}
+\setsansfont[Path=oilworks/fonts/, UprightFont=*-R]{Andika}
 
 % Combined list of figures and tables,
 % see http://tex.stackexchange.com/questions/258501/how-to-make-a-combined-list-of-figures-and-tables/258516#258516
