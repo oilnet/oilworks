@@ -13,12 +13,14 @@ A LaTeX style formatter package that allows users to create LaTeX documents conf
 
 # How to use #
 
-- `mkdir MyNewDocument`
-- `cd MyNewDocument`
-- `git init .`
-- `git submodule add https://git.weitnahbei.de/jrs-studium/oilworks.git`
-- `cd oilworks`
-- `./setup.sh` (Follow the instructions)
+```
+mkdir MyNewDocument
+cd MyNewDocument
+git init .
+git submodule add https://github.com/oilnet/oilworks.git
+cd oilworks
+./setup.sh # (Follow the instructions)
+```
 
 ## Paragraph Formatting ##
 
