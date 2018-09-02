@@ -22,12 +22,12 @@
       \fi
 
       \begingroup
-        \ifx\@subtitle\empty
+        \ifx\@OWsubtitle\empty
+          {\normalsize {\@title}} \\
+        \else
           {\LARGE \@title} \\
           \vspace{0.2cm}
           {\normalsize \textit{\@subtitle}} \\
-        \else
-          {\normalsize {\@title}} \\
         \fi
       \endgroup
       \vspace*{1.25cm}
