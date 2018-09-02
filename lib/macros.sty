@@ -2,24 +2,10 @@
 % Based on jackson13's mla13 style designed for the Modern Language Association's
 % style guidelines (see https://github.com/jackson13info/mla13).
 
-% \usepackage{fancyhdr}
-% \fancyhf{}
-% \fancyhead{}
-% \renewcommand{\headrulewidth}{0pt}
-
 % Change section headings
 % -----------------------------------------------------------------------------
 \renewcommand\thesection{\@arabic\c@section.}
 \renewcommand\thesubsection{\thesection\@arabic\c@subsection}
-% \renewcommand\section{\@startsection{section}{1}{\z@}%
-% {\z@}%
-% {\lineskip}}
-% \renewcommand\subsection{\@startsection{subsection}{2}{\z@}%
-% {\z@}%
-% {\lineskip}}
-% \renewcommand\subsubsection{\@startsection{subsubsection}{3}{\z@}%
-% {\z@}%
-% {\lineskip}}
 \def\section{\@startsection{section}{1}{\z@}{-5.25ex plus -1ex minus -.2ex}{3.5ex plus .2ex}{\newpage\centering\large\textbf}}
 \def\subsection{\@startsection{subsection}{1}{\z@}{-4.25ex plus -1ex minus -.2ex}{0.5ex plus .2ex}{\large\textbf}}
 \def\subsubsection{\@startsection{subsubsection}{1}{\z@}{-2.75ex plus -1ex minus -.2ex}{0.5ex plus .2ex}{\large\textbf}}
@@ -261,35 +247,3 @@
 \setlength{\cfttabnumwidth}{5.5em}
 \setlength{\cftfigindent}{1pt}
 \setlength{\cfttabindent}{0pt}
-
-% Autoref settings
-% -----------------------------------------------------------------------------
-% \def\subsubsectionautorefname{chapter}
-% \def\subsectionautorefname{chapter}
-% \def\sectionautorefname{chapter}
-% \def\figureautorefname{figure}
-% \def\tableautorefname{table}
-% \def\appendixautorefname{appendix}
-% \def\Autoref#1{%
-%   \begingroup
-%   \edef\reserved@a{\cpttrimspaces{#1}}%
-%   \ifcsndefTF{r@#1}{%
-%     \xaftercsname{\expandafter\testreftype\@fourthoffive}
-%       {r@\reserved@a}.\\{#1}%
-%   }{%
-%     \ref{#1}%
-%   }%
-%   \endgroup
-% }
-% \def\testreftype#1.#2\\#3{%
-%   \ifcsndefTF{#1autorefname}{%
-%     \def\reserved@a##1##2\@nil{%
-%       \uppercase{\def\ref@name{##1}}%
-%       \csn@edef{#1autorefname}{\ref@name##2}%
-%       \autoref{#3}%
-%     }%
-%     \reserved@a#1\@nil
-%   }{%
-%     \autoref{#3}%
-%   }%
-% }
