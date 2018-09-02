@@ -1,1 +1,1 @@
-$pdf_previewer = "false";
+$pdf_previewer = 'start evince';

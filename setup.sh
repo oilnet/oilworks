@@ -62,7 +62,7 @@ fi
   ln -s oilworks/lib
   mkdir -p images
   cp oilworks/images/uofl_official_seal.png images/
-  cp oilworks/.gitignore .
+  cp oilworks/.gitignore oilworks/.latexmkrc .
   cat oilworks/Makefile | sed s/sample/$NAME/g > Makefile
   git add .
   git commit -a -m "Initial commit."
