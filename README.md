@@ -1,4 +1,4 @@
-Oilworks
+OILWorks
 ========
 
 A LaTeX style formatter package that allows users to create LaTeX documents conforming to the Oriental Institute of Leipzig's style requirements.
@@ -37,4 +37,4 @@ This package uses Biber. All of your sources should be kept in a .bib file and s
 
 # Comments, Suggestions, or Anything Else #
 
-If you have any suggestions, feel free to update the files yourself, I'm open to any submissions or pull requests.
+Pull Requests and Issues are most welcome!
