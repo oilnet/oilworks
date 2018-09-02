@@ -22,7 +22,7 @@ A LaTeX style formatter package that allows users to create LaTeX documents conf
 
 ## Paragraph Formatting ##
 
-Paragraph formatting is pretty standard as concerns German typesetting conventions. The font used is Charis SIL for Latin parts of the document and is of size 12. Arabic is typeset in Amiri. In order to change the justification of the paper, you have 3 options: (1) left justification, (2) right justification, or (3) justified. Justified is the default because it is also the LaTeX default setting. If you would like to change the justification settings of your paper, use the following commands:
+Paragraph formatting is pretty standard as concerns German typesetting conventions. OILWorks tries to use [SIL fonts](https://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&id=fontdownloads) as much as possible. The main font is Charis SIL in size 12pt for Latin parts of the document. Headings are in Andika and Arabic is typeset in Scheherazade, 1.2 times larger than Charis so that they work well when mixed on a single line. In order to change the justification of the paper, you have 3 options: (1) left justification, (2) right justification, or (3) justified. Justified is the default because it is also the LaTeX default setting. If you would like to change the justification settings of your paper, use the following commands:
 
 To make the file right justified use `\raggedleft`
 To make the file left justified use `\raggedright`
